@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		*{
+			margin:0;
+			padding:0;
+		}
+		body{
+			font-size:12px;
+			font-family:"微软雅黑";
+		}
+		a{
+			display:block;
+			text-decoration:none;
+		}
+		img{
+			display:block;
+			border:0;
+		}
+		#box{
+			width:875px;
+			height:553px;
+			background:url(images/bg.png) no-repeat;
+			position:relative;
+		}
+		#up,#be{
+			width:66px;
+			height:16px;
+			position:absolute;
+			top:56px;
+		}
+		#up{
+			left:22px;
+		}
+		#be{
+			left:98px;
+		}
+		#imgon,#imgtu{
+			height:245px;
+			position:absolute;
+			top:114px;
+		}
+		#imgon,#pon{
+			width:448px;
+			left:49px;
+		}
+		#imgtu,#ptu{
+			width:248px; 
+			left:559px;
+		}
+		#pon,#ptu{
+			height:20px;
+			line-height:20px;
+			font-size:14px;
+			color:#000;
+			text-align:center;
+			position:absolute;
+			top:365px;
+		}
+		#psr,#pfo{
+			width:30px;
+			height:26px;
+			line-height:26px;
+			font-size:12px;
+			color:#000;
+			text-align:left;
+			position:absolute;
+			top:390px;
+		}
+		#psr{
+			left:49px;
+		}
+		#pfo{
+			left:559px;
+		}
+	</style>
+	<script>
+		window.onload = function(){
+			//1   获取变量
+			var up = document.getElementById('up');
+			var be = document.getElementById('be');
+			var imgon = document.getElementById('imgon');
+			var imgtu = document.getElementById('imgtu');
+			var pon = document.getElementById('pon');
+			var ptu = document.getElementById('ptu');
+			var psr = document.getElementById('psr');
+			var pfo = document.getElementById('pfo');
+			var mm = 0;
+			var nm = 0;
+			//存数组
+			var imagee = ['images/0.jpg','images/1.jpg','images/2.jpg','images/3.jpg',];
+			var imagees = ['images/6.jpg','images/9.jpg','images/10.jpg',];
+			var txxt = ['第一组第1张','第一组第2张','第一组第3张','第一组第4张',];
+			var txet = ['第二组第1张','第二组第2张','第二组第3张',];
+			//初始化
+			ttt()
+			function ttt(){
+				imgon.src = imagee[mm];
+				imgtu.src = imagees[nm];
+				pon.innerHTML = txxt[mm];
+				ptu.innerHTML = txet[nm];
+				psr.innerHTML = mm+1+'/'+txxt.length;
+				pfo.innerHTML = nm+1+'/'+txet.length;
+		}
+			//2   点击上一组/下一组：
+			//		图片、图片文字、图片数字变换
+			
+			up.onclick = function(){
+				mm--;
+				nm--;
+				if(mm<txxt.length-4){
+					mm = txxt.length-1;
+				}
+				if(nm<txet.length-3){
+					nm = txet.length-1;
+				}
+				ttt()
+			}
+			be.onclick = function(){
+				mm++;
+				nm++;
+				if(mm>txxt.length-1){
+					mm = txxt.length-4;
+				}
+				if(nm>txet.length-1){
+					nm = txet.length-3;
+				}
+				ttt()
+				
+			}
+			//点击图片变化
+			imgon.onclick = function(){
+				mm++;
+				if(mm>txxt.length-1){
+					mm = txxt.length-4;
+				}
+				ttt()
+			}
+			imgtu.onclick = function(){
+				nm++;
+				if(nm>txet.length-1){
+					nm = txet.length-3;
+				}
+				ttt()
+			}
+
+		}
+	</script>
+</head>
+<body>
+	<div id="box">
+		<a href="javascript:;" id="up"></a>
+		<a href="javascript:;" id="be"></a>
+		<img src="" id="imgon"/>
+		<img src="" id="imgtu" />
+		<p id="pon"></p>
+		<p id="ptu"></p>
+		<p id="psr"></p>
+		<p id="pfo"></p>
+	</div>
+</body>
+</html>
